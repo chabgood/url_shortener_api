@@ -1,0 +1,32 @@
+common: &common
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  pool: 5
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+
+development:
+  <<: *common
+  reconnect: false
+  # These entries will be removed soon - move them to your `.env` file when you can
+  database: url_shortner_dev
+  username: root
+  password: 
+  host: localhost
+
+test: &test
+  <<: *common
+  reconnect: false
+  database: url_shortner_test
+  username: root
+  password: 
+  host: localhost
+
+staging:
+  <<: *common
+
+production:
+  <<: *common
