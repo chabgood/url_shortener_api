@@ -4,6 +4,7 @@ module Api
   module V1
     # UrlShortener controller
     class UrlShortenerController < ApplicationController
+      include ActionController::MimeResponds
       def create
         urls_shortener = UrlShortener.create(url_shortener_params)
         render json: urls_shortener, status: :ok if urls_shortener.persisted?
@@ -14,7 +15,10 @@ module Api
         if url_shortener.expired?
           render json: 'errors/404', status: :not_found
         else
-          render json: url_shortener.url, status: :ok
+          respond_to do |format|
+            format.html { redirect_to(url_shortener.url) }
+            format.json { render json: url_shortener.url, status: :ok }
+          end
         end
       end
 

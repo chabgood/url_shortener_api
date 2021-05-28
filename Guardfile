@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-# Note: The cmd option is now required due to the increasing number of ways
+# NOTE: The cmd option is now required due to the increasing number of ways
 #       rspec may be run, below are examples of the most common uses.
 #  * bundler: 'bundle exec rspec'
 #  * bundler binstubs: 'bin/rspec'
@@ -8,8 +9,8 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "bundle exec rspec" do
-  require "guard/rspec/dsl"
+guard :rspec, cmd: 'bundle exec rspec' do
+  require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
@@ -31,7 +32,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rails.controllers) do |m|
     [
       rspec.spec.call("routing/#{m[1]}_routing"),
-      rspec.spec.call("api/v1/controllers/#{m[1]}_controller"),
+      rspec.spec.call("api/v1/controllers/#{m[1]}_controller")
     ]
   end
 

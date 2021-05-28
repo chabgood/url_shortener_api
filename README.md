@@ -14,3 +14,5 @@ This is a Ruby on Rails V6, Ruby 3, api for url shortener
 * You can run the server with `rails s`
 
 * For the  development I did TDD with RSpec, I have a helper method `expired?` in the `UrlShortener` model to determine if the url is expired or not.  Other than that is very straight forward.
+
+* For simplicity I chose not validate any attributes.

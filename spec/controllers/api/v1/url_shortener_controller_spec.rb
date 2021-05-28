@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 describe Api::V1::UrlShortenerController do
+  before :each do
+    request.env['HTTP_ACCEPT'] = 'application/json'
+  end
   context '#create' do
     describe 'when slug provided' do
       it 'returns a 200' do

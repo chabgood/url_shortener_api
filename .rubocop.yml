@@ -1,4 +1,6 @@
 require: rubocop-rails
 
+AllCops:
+  NewCops: enable
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
