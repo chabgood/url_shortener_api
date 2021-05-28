@@ -4,6 +4,12 @@
 class UrlShortener < ApplicationRecord
   before_create :generate_slug
 
+  def expired?
+    return true if expires_on.present? && Time.zone.today >= expires_on
+
+    false
+  end
+
   private
 
   def generate_slug
